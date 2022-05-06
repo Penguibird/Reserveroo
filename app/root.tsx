@@ -12,12 +12,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-
-import tailwindStylesheetUrl from "./styles/tailwind.css";
-
-export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
-};
+import { AppHeader } from "./components/app-header";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -25,23 +20,16 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-interface HeaderProps {
-
-}
-
-const Header: React.FC<HeaderProps> = ({}: HeaderProps) => <>
-  <p>Reserveroo</p>
-</>
-
 export default function App() {
   return (
     <html lang="en" className="h-full">
       <head>
         <Meta />
         <Links />
+        {typeof document === "undefined" ? "__STYLES__" : null}
       </head>
       <body className="h-full">
-        <Header></Header>
+        <AppHeader>Reserveroo</AppHeader>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
