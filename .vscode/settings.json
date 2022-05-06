@@ -3,5 +3,7 @@
     "activityBar.background": "#282856",
     "titleBar.activeBackground": "#383878",
     "titleBar.activeForeground": "#FAFAFD"
-  }
+  },
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true
 }

@@ -14,7 +14,6 @@ import {
 } from "@remix-run/react";
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
-import { getUser } from "./session.server";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
@@ -22,19 +21,17 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Remix Notes",
+  title: "Reserveroo",
   viewport: "width=device-width,initial-scale=1",
 });
 
-type LoaderData = {
-  user: Awaited<ReturnType<typeof getUser>>;
-};
+interface HeaderProps {
 
-export const loader: LoaderFunction = async ({ request }) => {
-  return json<LoaderData>({
-    user: await getUser(request),
-  });
-};
+}
+
+const Header: React.FC<HeaderProps> = ({}: HeaderProps) => <>
+  <p>Reserveroo</p>
+</>
 
 export default function App() {
   return (
@@ -44,6 +41,7 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+        <Header></Header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
